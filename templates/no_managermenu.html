@@ -1,0 +1,65 @@
+<html>
+<head>
+<link type="text/css" href="{{url_for('static',filename='webpages_manager.css')}}" rel="stylesheet"/>
+<style>
+.content1
+{
+		background-size: cover;
+		background-attachment: fixed;         /* scroll div contents without background */
+		background-image:url({{url_for('static',filename='black.jpg')}});
+		height: 100%;
+}
+.content2
+{
+		text-align:center;
+		font-family:Merriweather;
+		font-size:22px;
+		color:white;
+}
+.gobacka
+{
+	text-decoration:none;
+	color:rgb(200,200,200);
+	font-size:20px;
+}
+
+.nava1
+{
+	color:white;
+	text-decoration:none;
+	font-size:42px;
+	cursor: pointer;
+}
+
+</style>
+</head>
+<body>
+<h1>
+<a href="/homepage_customer">
+<img src="{{url_for('static',filename='food.jpg')}}"  width="80" height="60"></a>
+<span class="h1span"><a class="nava1" href="/">Happy Eats</a></span>
+<a href="/manager_logout" class="login">LOGOUT</></a>
+</span>
+</h1>
+
+<div class="content1">
+	<br>
+	<br>
+	<br><br><br><br>
+	<div class="content2">
+		the menu for your restaurant is empty
+		<br><br>
+		<a class="gobacka" href="/manager_menu/{{place}}/{{username}}">go back to manager menu</a>
+	</div>
+	<br><br><br><br>
+
+
+</div>
+
+
+<br><br>
+
+
+</div>
+</body>
+</html>

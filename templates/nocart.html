@@ -1,0 +1,61 @@
+<html>
+<head>
+<link type="text/css" href="{{url_for('static',filename='webpages.css')}}" rel="stylesheet"/>
+<style>
+body
+{
+	background-color:rgb(200,200,200);
+
+}
+.content
+{
+	font-family:Merriweather;
+	margin-left:500px;
+	font-size:22px;
+}
+.contenta
+{
+	text-decoration:none;
+	color:rgb(10,10,110);
+	font-size:20px;
+}
+
+.nava1
+{
+	color:white;
+	text-decoration:none;
+	font-size:42px;
+	cursor: pointer;
+}
+
+</style>
+</head>
+<body>
+<h1>
+<a href="/homepage_customer">
+<img src="{{url_for('static',filename='food.jpg')}}"  width="80" height="60"></a>
+<span class="h1span"><a class="nava1" href="/">Happy Eats</a></span>
+<a href="/customer_logout" class="login">LOGOUT</></a>
+<a href="/cartshow" class="help">CART</a>
+<a href="/orders" class="help">MY ORDERS</a>
+
+</span>
+</h1>
+
+
+<div class="content">
+	<br><br><br><br>
+	your cart is empty
+	<br><br>
+	<a class="contenta" href="/homepage_customer">continue shopping</a>
+	<br>
+	<br><br><br><br>
+
+</div>
+
+<br><br>
+
+
+</div>
+</body>
+</html>

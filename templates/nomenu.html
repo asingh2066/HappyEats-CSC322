@@ -1,0 +1,61 @@
+<html>
+<head>
+<link type="text/css" href="{{url_for('static',filename='webpages.css')}}" rel="stylesheet"/>
+<style>
+body
+{
+	background-color:rgb(180,180,180);
+	margin:0;
+}
+.nomenu
+{
+	font-size:20px;
+	width:100%;
+	text-align:center;
+	height:300px;
+
+}
+.backa
+{
+	text-decoration:none;
+	font-size:18px;
+	color:rgb(10,10,150);
+}
+
+.nava1
+{
+	color:white;
+	text-decoration:none;
+	font-size:42px;
+	cursor: pointer;
+}
+</style>
+
+</head>
+<body>
+<h1>
+<a href="/homepage_customer">
+<img src="{{url_for('static',filename='food.jpg')}}"  width="80" height="60"></a>
+<span class="h1span"><a class="nava1" href="/">Happy Eats</a></span>
+<a href="/customer_logout" class="login">LOGOUT</></a>
+<a href="/cartshow" class="help">CART</a>
+<a href="/orders" class="help">MY ORDERS</a>
+
+</span>
+</h1>
+
+<br><br>
+<div class="nomenu">
+There is no menu available for this restaurant.
+</div>
+<br>
+<a class="backa" href="/homepage_customer">go back to home</a>
+<br>
+<a class="backa" href="/{{place}}">go back to restaurants list</a>
+
+<br><br>
+
+
+</div>
+</body>
+</html>

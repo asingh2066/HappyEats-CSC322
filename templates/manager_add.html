@@ -1,0 +1,232 @@
+<html>
+<head>
+<link type="text/css" href="{{url_for('static',filename='webpages_manager.css')}}" rel="stylesheet"/>
+
+<script type="text/javascript" src="{{url_for('static',filename='alert/alertify.min.js')}}"></script>
+<link rel="stylesheet" href="{{url_for('static',filename='alert/alertify.default.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='alert/alertify.core.css')}}">
+
+
+
+<script>
+function required()
+{
+	var item=document.forms["form1"]["item"].value;
+	var def=document.forms["form1"]["def"].value;
+	var price=document.forms["form1"]["price"].value;
+	var category=document.forms["form1"]["category"].value;
+	var y=0;
+	if((item=="")||(price=="")||(((category!='veg')&&(category!='non-veg'))&&(category!='others')))
+	{
+		alert("invalid fields");
+		document.form1.action="";
+	}
+	else
+	{
+		{% for x in var %}
+				if(item=="{{x[0]}}")
+				{
+					y=1;
+				}
+		{% endfor %}
+		if(y==0)
+		{
+			alertify.log( "item successfully added", "success" );
+			document.form1.enctype="multipart/form-data";
+			document.form1.action="http://localhost:5000/manager_add/{{place}}/{{username}}"
+		}
+		else
+		{
+			alert("item already exists");
+			document.form1.action="";
+		}
+	}
+
+}
+
+</script>
+
+</script>
+
+<style>
+.content1
+{
+				height: 20px;
+				background: linear-gradient(rgb(0,0,0), rgb(200,200,200));
+}
+.content2
+{
+		background-image:url({{url_for('static',filename='black.jpg')}});
+		height:700px
+
+}
+.content3			/* whole of login form */
+{
+		margin-left:370px;
+		height:550px;
+		width:600px;
+		border:1px solid;
+		border-radius: 5px;
+		border-color:rgb(200,200,200);
+
+}
+.oursite
+{
+		background-color:white;
+		border-color:white;
+		height:120px;
+		border-top-left-radius:5px;
+		border-top-right-radius:5px;
+		font-family:"Cormorant Garamond Medium";
+		font-size:23px;
+		padding-left:15px;
+		padding-top:20px;
+		font-color:rgb(200,200,200);
+		text-align:center;
+
+}
+.image
+{
+		float:right;
+}
+.logon
+{
+		font-size:20px;
+}
+.content4			/* lower part of login form */
+{
+		background-color:rgb(200,200,200);
+		border-color:rgb(200,200,200);
+		border:1px solid rgb(200,200,200);
+		height:410px;
+		border-bottom-left-radius:5px;
+		border-bottom-right-radius:5px;
+}
+.area
+{
+		font-family:"Cormorant Garamond Medium";          /* updates placeholder and input*/
+		font-size:20px;
+		border:3px solid rgb(160,160,160);
+		margin-left:100px;
+		margin-right:60px;
+		border-top-left-radius:3px;
+		border-top-right-radius:3px;
+		border-bottom-left-radius:3px;
+		border-bottom-right-radius:3px;
+		width:400px;
+		height:40px;
+		background-color:rgb(220,220,220)
+}
+input#gobutton
+{
+		font-family:"Cormorant Garamond Medium";
+		font-weight:bold;
+		font-size:20px;
+		margin-left:100px;
+		width:400px;
+		cursor:pointer;		 /*forces the cursor to change to a hand when the button is hovered*/
+		padding:5px 25px;
+		background:rgb(18,124,36);
+		border:1px solid #33842a;
+		border-radius: 3px;
+
+		box-shadow: 0 0 4px rgba(0,0,0, .75);
+		color:#f3f3f3;
+}
+
+input#gobutton:hover, input#gobutton:focus
+{
+		background-color :#399630;
+		box-shadow: 0 0 1px rgba(0,0,0, .75);
+}
+.image_url
+{
+	margin-left:100px;
+}
+
+.nava1
+{
+	color:white;
+	text-decoration:none;
+	font-size:42px;
+	cursor: pointer;
+}
+</style>
+</head>
+<body>
+<h1>
+<img src="{{url_for('static',filename='food.jpg')}}"  width="80" height="60">
+<span class="h1span"><a class="nava1" href="/">Happy Eats</a></span>
+<a href="/manager_logout" class="login">LOGOUT</></a>
+</span>
+</h1>
+
+<div class="content2">
+<br>
+<br>
+<br>
+<br>
+<div class="content3">
+
+	<div class="oursite">
+		<img class="image" src="{{url_for('static',filename='dish.jpg')}}"  width="110" height="110">
+		<br>
+		<b>
+		Enter the details regarding the dish
+		<br>
+		you would like to add !
+		</b>
+
+		<br>
+
+
+</div>
+<div class="content4">
+	<br>
+
+	<form name='form1' onsubmit="required()" method="post">
+	<br>
+	<input class="area" type='text' name='item' placeholder="Item" required>
+	<br>
+	<br>
+	<input class="area" type="text" name="category" placeholder="veg/non-veg/others" required>
+	<br>
+	<br>
+	<input class="area" type="text" name="def"  placeholder="Description" required>
+    <br>
+    <br>
+	<input class="area" type="number" name="price" placeholder="Price" required>
+	<br>
+	<br>
+	<span class="image_url">Image URL:
+	</span>
+	<input type="file" name="filename"  placeholder="Image path" title="Enter the complete path of image" required>
+	<br>
+	<br>
+	<br>
+    <input id="gobutton" type="submit" name="submit" value="Add To Menu" />
+
+	<br>
+
+
+  </form>
+</div>
+
+
+
+</form>
+<br>
+<br>
+<br>
+<br>
+
+</div>
+</div>
+
+
+<br><br>
+
+
+</div>
+</body>
+</html>

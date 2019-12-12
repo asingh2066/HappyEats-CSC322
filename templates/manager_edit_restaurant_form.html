@@ -1,0 +1,232 @@
+<html>
+<head>
+<link type="text/css" href="{{url_for('static',filename='webpages.css')}}" rel="stylesheet"/>
+
+<script type="text/javascript" src="{{url_for('static',filename='alert/alertify.min.js')}}"></script>
+<link rel="stylesheet" href="{{url_for('static',filename='alert/alertify.default.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='alert/alertify.core.css')}}">
+
+
+<script>
+
+</script>
+<style>
+
+.content1
+{
+				height: 20px;
+				background: linear-gradient(rgb(0,0,0), rgb(200,200,200));
+}
+.content2
+{
+		background-image:url({{url_for('static',filename='black.jpg')}});
+		height:1100px
+
+}
+.content3			/* whole of login form */
+{
+		margin-left:370px;
+		height:900px;
+		width:600px;
+		border:1px solid;
+		border-radius: 5px;
+		border-color:rgb(200,200,200);
+
+}
+.oursite
+{
+		background-color:white;
+		border-color:white;
+		height:60px;
+		font-size:30px;
+		border-top-left-radius:5px;
+		border-top-right-radius:5px;
+		font-family:"Cormorant Garamond Medium";
+		padding-left:170px;
+		padding-top:20px;
+		font-color:rgb(200,200,200);
+
+}
+.image
+{
+		float:right;
+}
+.logon
+{
+		font-size:20px;
+}
+.content4			/* lower part of login form */
+{
+		background-color:rgb(200,200,200);
+		border-color:rgb(200,200,200);
+		border:1px solid rgb(200,200,200);
+		height:820px;
+		border-bottom-left-radius:5px;
+		border-bottom-right-radius:5px;
+}
+.area
+{
+		font-family:"Cormorant Garamond Medium";          /* updates placeholder and input*/
+		font-size:20px;
+		border:3px solid rgb(160,160,160);
+		margin-left:100px;
+		margin-right:60px;
+		border-top-left-radius:3px;
+		border-top-right-radius:3px;
+		border-bottom-left-radius:3px;
+		border-bottom-right-radius:3px;
+		width:400px;
+		height:40px;
+		background-color:rgb(220,220,220)
+}
+input#gobutton
+{
+		font-family:"Cormorant Garamond Medium";
+		font-weight:bold;
+		font-size:20px;
+		margin-left:100px;
+		width:400px;
+		cursor:pointer;		 /*forces the cursor to change to a hand when the button is hovered*/
+		padding:5px 25px;
+		background:rgb(18,124,36);
+		border:1px solid #33842a;
+		border-radius: 3px;
+
+		box-shadow: 0 0 4px rgba(0,0,0, .75);
+		color:#f3f3f3;
+}
+
+input#gobutton:hover, input#gobutton:focus
+{
+		background-color :#399630;
+		box-shadow: 0 0 1px rgba(0,0,0, .75);
+}
+.details
+{
+		padding-left:100px;
+		font-size:18px;
+}
+.hint {
+  position: absolute;
+  right: -250px;
+  width: 200px;
+  margin-top: -4px;
+  border: 1px solid #c93;
+  padding: 10px 12px;
+  background-color: #ffc;
+}
+
+.fixed
+{
+		font-family:"Cormorant Garamond Medium";          /* updates placeholder and input*/
+		font-size:20px;
+		border:3px solid rgb(160,160,160);
+		margin-left:100px;
+		margin-right:60px;
+		border-top-left-radius:3px;
+		border-top-right-radius:3px;
+		border-bottom-left-radius:3px;
+		border-bottom-right-radius:3px;
+		width:400px;
+		height:35px;
+		line-height:35px;
+		vertical-align:midlle;
+		background-color:rgb(220,220,220)
+}
+.nava1
+{
+	color:white;
+	text-decoration:none;
+	font-size:42px;
+	cursor: pointer;
+}
+</style>
+</head>
+<body>
+<h1>
+
+<img src="{{url_for('static',filename='food.jpg')}}"  width="80" height="60">
+<span class="h1span"><a class="nava1" href="/">Happy Eats</a></span>
+</h1>
+
+
+
+
+
+<div class="content2">
+<br>
+<br>
+<br>
+<br>
+<div class="content3">
+
+	<div class="oursite">
+		<b>
+		Sign Up for Free
+		</b>
+
+
+
+	</div>
+<div class="content4">
+	<br>
+
+	<form name='form1' action="/manager_edit_restaurant/{{place}}/{{username}}" method="post" enctype="multipart/form-data">
+	<br>
+	<span class="details">Place :
+	</span>
+	<div class="fixed">{{place}}</div>
+
+	<br>
+	<span class="details">Choose your username :
+	</span>
+	<div class="fixed">{{username}}</div>
+	<br>
+	<span class="details">Location of your restaurant :
+	</span>
+	<input class="area" type="text" name="location" placeholder="Location" value="{{loc}}">
+	<br>
+	<br>
+	<span class="details">Phone number :
+	</span>
+	<input class="area" type="number" name="phone" placeholder="Phone" value="{{ph}}" min="1000000000" max="9999999999">
+	<br>
+	<br>
+	<span class="details">Staring time :
+	</span>
+	<input class="area" type="time" name="start_time" placeholder="Starting Time" value="{{st}}">
+	<br>
+	<br>
+	<span class="details">Closing time :
+	</span>
+	<input class="area" type="time" name="close_time" placeholder="Closing Time" value="{{ct}}">
+	<br>
+	<br>
+	<span class="details">Image URL:
+	</span>
+	<input type="file" name="filename"  placeholder="Image path" title="Enter the complete path of image" value="{{di}}">
+    <br>
+    <br>
+	<br>
+    <input id="gobutton" type="submit" name="submit" value="Confirm Changes" />
+
+	<br>
+
+
+  </form>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+</div>
+</div>
+
+<br><br>
+
+
+</div>
+</body>
+</html>

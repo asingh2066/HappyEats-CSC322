@@ -1,0 +1,201 @@
+<html>
+<head>
+<style>
+
+.image
+{
+
+	   border: 2px solid black;
+}
+.image:hover
+{
+	opacity:0.5;
+}
+
+.content2
+{
+			margin-left:200px;
+			margin-right:288px;
+			background:rgba(255,255,255,0.8);
+
+
+
+}
+
+.content1
+{
+				height: 20px;
+				background: linear-gradient(rgb(0,0,0), rgb(200,200,200));
+}
+
+td
+{
+			padding: 15px;
+}
+.definition1
+{
+				width:389px;
+				font-weight:700;
+				font-family: "Cormorant Garamond Medium";
+				font-size:20px;
+				color:black;
+
+}
+.column
+{
+
+		float: left;
+		padding: 0px;
+		margin-right:30px;
+
+
+
+}
+
+.table
+{
+		float:right;
+}
+.table::after
+{
+	clear: both;
+
+
+}
+.link
+{
+		font-family:'Cormorant Garamond Medium';
+		font-size:22px;
+		font-weight:600;
+		color:rgb(142,9,9);
+		text-decoration: none;
+}
+.background
+{
+		background-size: cover;
+		background-attachment: fixed;         /* scroll div contents without background */
+		height: 100%;
+}
+
+.mainrow:hover
+{
+		background:rgba(255,255,255,0.85);
+}
+.refine
+{
+	font-family:"Merriweather";
+	font-size:17px;
+
+}
+.refina
+{
+	text-decoration:none;
+	color:rgb(120,10,10);
+	font-weight:bold;
+	font-family:"PT Serif";
+
+}
+
+.nava1
+{
+	color:white;
+	text-decoration:none;
+	font-size:42px;
+	cursor: pointer;
+}
+</style>
+<link type="text/css" href="{{url_for('static',filename='webpages.css')}}" rel="stylesheet"/>
+<link type="text/css" href="{{url_for('static',filename='hover.css')}}" rel="stylesheet"/>
+
+</head>
+<body>
+<h1>
+
+<img src="{{url_for('static',filename='food.jpg')}}"  width="80" height="60">
+<span class="h1span"><a class="nava1" href="/">Happy Eats</a></span>
+<span>
+<a href="/customer_logout" class="login">LOGOUT</></a>
+<a href="/cartshow" class="help">CART</a>
+<a href="/orders" class="help">MY ORDERS</a>
+
+</span>
+</h1>
+
+
+<div class="background" style="background-image:url({{url_for('static',filename='homepage_pic.jpg')}});">
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="content2">
+
+
+
+ <div class="column">
+    <ul style="list-style-type: none;">
+		<li><span class="refine">Restaurants In Your Area  : </span></li>
+    </ul>
+
+
+ </div>
+
+
+
+<!--displays different restaurants in current place -->
+
+
+
+<table style="border-left:1px solid rgb(50,50,50)">
+{%for x in var%}
+<tr class="mainrow">
+
+	<td style="padding-left:50px;border-bottom: 1px solid rgb(50,50,50);">
+	<div style="width:200px">
+    <div class="hovereffect">
+        <img class="img-responsive" src="{{url_for('static',filename='restaurants/'+x[2])}}" width="150" height="150" alt="">
+        <div class="overlay">
+
+           <a class="info" href="/{{place}}/menu/{{x[0]}}">{{x[0]}}</a>
+        </div>
+    </div>
+	</div>
+	</td>
+
+
+	<td style="border-bottom: 1px solid rgb(50,50,50);">
+	<p class="definition1">
+
+
+Location : {{x[4]}}<br>
+&phone; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<span style="font-family:'Times New Roman';font-size:18px;"> {{x[5]}}</span><br>
+Opens at :<span style="font-family:'Times New Roman';font-size:18px;"> {{x[6]}}</span> <br>
+Closes at : <span style="font-family:'Times New Roman';font-size:18px;"> {{x[7]}}</span><br>
+Rating  &nbsp;&nbsp;&nbsp;  : <span style="font-family:'Times New Roman';font-size:18px;">  {{dict[x[0]]}}/5</span>
+
+
+	</p>
+	</td >
+
+
+</tr>
+{%endfor%}
+</table>
+</div>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+</div>
+
+<br><br>
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<html>
+<head>
+<link type="text/css" href="{{url_for('static',filename='webpages.css')}}" rel="stylesheet"/>
+
+<script type="text/javascript" src="{{url_for('static',filename='alert/alertify.min.js')}}"></script>
+<link rel="stylesheet" href="{{url_for('static',filename='alert/alertify.default.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='alert/alertify.core.css')}}">
+
+
+<script>
+function required()
+{
+var subject=document.forms["form1"]["subject"].value;
+var message=document.forms["form1"]["message"].value;
+
+
+
+	alertify.log( "message sent", "success" );
+	document.form1.action="http://localhost:5000/contact_form_submitted/{{temp}}";
+	document.form1.method="post";
+
+
+}
+</script>
+<style>
+body
+{
+	background-color:rgb(180,180,180);
+}
+.content
+{
+		margin-left:370px;
+		height:300px;
+		width:600px;
+		border:1px solid;
+		border-radius: 5px;
+
+		border-color:rgb(150,150,150);
+
+}
+.oursite
+{
+		background-color:rgb(150,150,150);
+		border-color:white;
+		height:50px;
+		border-top-left-radius:5px;
+		border-top-right-radius:5px;
+		font-family:"Cormorant Garamond Medium";
+		font-size:25px;
+		font-weight:900;
+		padding-top:20px;
+		font-color:rgb(200,200,200);
+		text-align:center;
+
+}
+.heading
+{
+	font-family:"Arimo";
+	font-size:15px;
+	margin-left:12px;
+	position:relative;
+
+}
+
+.input_name
+{
+		margin-left:30px;
+		border-radius:3px;
+		font-size:15px;
+		font-family:"Times New Roman";
+		position:relative;
+		margin-top:5px;
+		width:450px;
+		padding:5px;
+
+
+}
+
+.input_address
+{
+		margin-left:30px;
+		border-radius:3px;
+		font-size:15px;
+		font-family:"Times New Roman";
+		position:relative;
+		margin-top:5px;
+		width:450px;
+		padding:5px;
+
+
+}
+input#gobutton
+{
+		font-family:"Cormorant Garamond Medium";
+		font-weight:bold;
+		font-size:20px;
+		margin-left:120px;
+		width:350px;
+		cursor:pointer;		 /*forces the cursor to change to a hand when the button is hovered*/
+		padding:5px 25px;
+		background:rgb(18,124,36);
+		border:1px solid #33842a;
+		border-radius: 3px;
+
+		box-shadow: 0 0 4px rgba(0,0,0, .75);
+		color:#f3f3f3;
+}
+
+input#gobutton:hover, input#gobutton:focus
+{
+		background-color :#399630;
+		box-shadow: 0 0 1px rgba(0,0,0, .75);
+}
+
+.nava1
+{
+	color:white;
+	text-decoration:none;
+	font-size:42px;
+	cursor: pointer;
+}
+</style>
+</head>
+<body>
+<h1>
+
+<img src="{{url_for('static',filename='food.jpg')}}"  width="80" height="60">
+<span class="h1span"><a class="nava1" href="/">Happy Eats</a></span>
+
+</h1>
+
+<br><br><br><br>
+
+<div class="content">
+	<div class="oursite">
+		Message Us
+	</div>
+	<br>
+	<form name='form1' onsubmit="required()">
+		<table>
+				<tr>
+				<td><span class="heading">Subject</span></td>
+				<td><input class="input_name" type='text' name='subject' required></td></tr>
+				<tr>
+				<td><span class="heading">Message</span></td>
+				<td><textarea class="input_address" type='text' name='message' cols="40" rows="5" required></textarea></td></tr>
+
+		</table>
+			<br>
+			<input id="gobutton"  type="submit" name="submit" value="Send" />
+			<br>
+
+	</form>
+
+</div>
+<br><br><br><br>
+
+<br><br>
+
+
+</div>
+</body>
+</html>

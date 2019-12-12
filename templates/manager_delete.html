@@ -1,0 +1,182 @@
+<html>
+<head>
+<link type="text/css" href="{{url_for('static',filename='webpages_manager.css')}}" rel="stylesheet"/>
+
+
+<style>
+
+.content1
+{
+				height: 20px;
+				background: linear-gradient(rgb(0,0,0), rgb(200,200,200));
+}
+.content2
+{
+		background-image:url({{url_for('static',filename='black.jpg')}});
+		background-size: cover;
+		background-attachment: fixed;         /* scroll div contents without background */
+		height: 120%;
+}
+.content3
+{
+		width:1000px;
+		margin-left:200px;
+		background:rgba(230,230,230,0);
+
+}
+.food
+{
+	margin-left:20px;
+		margin-right:30px;
+
+	margin-top:20px;
+	margin-bottom:70px;
+	font-size:22px;
+	vertical-align:top;		/*to start div contents from top */
+	width:250px;
+   max-width:250px;
+   height:"";
+   max-height:"";
+   display: inline-block;
+   border-style:solid;
+	border-color:rgb(160,160,160);
+    border-width: 1px;
+	position:relative;
+	font-family:"Cormorant Garamond Medium";
+	font-weight:bold;
+	background-color:rgb(245,245,245);
+	   box-shadow: 10px 10px 5px #888888;
+
+}
+
+
+.heading_
+{
+		padding-left:5px;
+		font-size:21px;
+		color: rgb(100,100,100);
+		text-align:center;
+}
+.price
+{
+		padding-left:5px;
+		padding-bottom:5px;
+
+		font-size:21px;
+		color: rgb(100,100,100)
+}
+.desc
+{
+		padding-left:10px;
+		padding-right:10px;
+		font-size:18px;
+		padding-top:4px;
+}
+
+
+.delete
+{
+		border-top-color:rgb(160,160,160);
+		border-top-style:solid;
+		border-top-width:1px;
+		width:250px;
+		max-width:250px;
+		background-color:rgb(245,245,245);
+		position:absolute;			/* to diplay at last of parent container.  also parent should have postn relative */
+		text-align:right;
+
+}
+.deletea
+{
+	    font-weight: bold;
+		font-size:23px;
+		color:rgb(200,10,10);
+
+		text-decoration:none;
+		display:block;		/* to apply properties to whole line till end of container */
+
+}
+.deletea:hover
+{
+		color:white;
+		background-color:rgb(200,10,10);
+
+}
+
+.nava1
+{
+	color:white;
+	text-decoration:none;
+	font-size:42px;
+	cursor: pointer;
+}
+</style>
+
+</head>
+<body>
+<h1>
+<img src="{{url_for('static',filename='food.jpg')}}"  width="80" height="60">
+<span class="h1span"><a class="nava1" href="/">Happy Eats</a></span>
+<a href="/manager_logout" class="login">LOGOUT</></a>
+</span>
+</h1>
+
+<div class="content2">
+<br>
+<br>
+<br>
+<br>
+
+<div class="content3">
+
+	{% for x in var %}
+	<!--displays menu of different restaurants -->
+	<div class="food">
+
+		<img src="{{url_for('static',filename='dish/'+x[4])}}" height="150" width="250">
+
+	<div class="heading_">
+		{{x[0]}}
+	<br>
+	 	</div>
+
+	<div class="desc">
+	{{x[1]}}
+	<br>
+	</div>
+	<div class="price">
+		&#8377;
+	{{x[2]}}
+	</div>
+
+	<div class="delete">
+			<a class="deletea" href="/manager_delete_database/{{place}}/{{username}}/{{x[0]}}/{{x[1]}}">remove this item &cross; ></a>
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+	{% endfor %}
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+
+<br>
+
+</div>
+
+<br><br>
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<html>
+<head>
+<link type="text/css" href="{{url_for('static',filename='webpages.css')}}" rel="stylesheet"/>
+
+<style>
+
+.cell
+{
+		font-family:"Cormorant Garamond Medium";
+		padding:250px;
+}
+.cella
+{
+		font-size:50px;
+		text-decoration:none;
+		color:white;
+		font-family:Ariel;
+		font-weight:900;
+}
+.content
+{
+		background-image:url({{url_for('static',filename='homepage_pic.jpg')}});
+		height:800px
+}
+.nava1
+{
+	color:white;
+	text-decoration:none;
+	font-size:42px;
+	cursor: pointer;
+}
+.para{
+	font-size:50px;
+	text-decoration:none;
+	color:white;
+	font-family:Ariel;
+	font-weight:900;
+	margin-left: 45%;
+	margin-top: -15%;
+}
+
+</style>
+
+<body>
+<h1>
+
+<img src="{{url_for('static',filename='food.jpg')}}"  width="80" height="60">
+
+<span class="h1span"><a class="nava1" href="/">Happy Eats</a></span>
+
+</h1>
+
+<div class="content">
+<table style="border-left:1px solid rgb(50,50,50)">
+<tr>
+<td class="cell">
+<a href="http://localhost:5000/customer" class="cella">Customer Login</a>
+</td>
+<td class="cells">
+<a href="http://localhost:5000/delivery" class="cella">Delivery</a>
+</td>
+<td class="cell">
+<a href="http://localhost:5000/manager_login" class="cella">Manager Login</a>
+</td>
+</tr>
+</table>
+<h3 class="para"><a href="http://localhost:5000/visitor_logged_in" class="cella">Visitor</a></h3>
+</content>
+
+</body>
+</html>

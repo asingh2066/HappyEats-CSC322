@@ -1,0 +1,241 @@
+<html>
+<head>
+<link type="text/css" href="{{url_for('static',filename='webpages.css')}}" rel="stylesheet"/>
+
+<script type="text/javascript" src="{{url_for('static',filename='alert/alertify.min.js')}}"></script>
+<link rel="stylesheet" href="{{url_for('static',filename='alert/alertify.default.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='alert/alertify.core.css')}}">
+
+
+
+<script>
+function required()
+{
+var cardnumber=document.forms["form1"]["cardnumber"].value;
+var name=document.forms["form1"]["name"].value;
+var cvv=document.forms["form1"]["cvv"].value;
+var month=document.forms["form1"]["month"].value;
+var year=document.forms["form1"]["year"].value;
+
+alertify.log( "order successfully placed", "success" );
+document.form1.action="http://localhost:5000/cartclear";
+
+}
+
+</script>
+
+
+<style>
+.background
+{
+		background-size: cover;
+		background-attachment: fixed;  		/* scroll div contents without background */
+		height:700px;
+		background-color:rgb(100,100,100);
+}
+.content1			/* full box*/
+{
+		border:1px solid rgb(170,170,170);
+		height:430px;
+		border-radius:3px;
+		width:500px;
+		border:collapse;
+		margin-left:400px;
+}
+.content2			/* upper part of box*/
+{
+		border:1px solid rgb(170,170,170);
+		height:50px;
+		background-color:rgb(200,200,200);
+		border-top-left-radius:3px;
+		border-top-right-radius:3px;
+
+
+}
+.content3         	/* lower part of box */
+{
+		border:1px solid rgb(170,170,170);
+		border-bottom-left-radius:3px;
+		border-bottom-right-radius:3px;
+		background-color:white;
+		height:430px;
+}
+.heading
+{
+	font-family:"Arimo";
+	font-size:16px;
+	margin-left:30px;
+
+}
+.payment
+{
+	font-size:25px;
+	margin-left:10px;
+	font-family:"Montserrat";
+	font-weight:bold;
+	height: 40px;
+	line-height: 40px;
+
+	text-align: center;
+
+}
+.card_image
+{
+	position:absolute;
+	margin-left:120px;
+	padding-top:5px;
+
+
+}
+.input_number
+{
+		margin-left:30px;
+		border-radius:3px;
+		font-size:16px;
+		font-family:"Times New Roman";
+		position:relative;
+		margin-top:5px;
+		width:450px;
+		padding:5px;
+
+}
+.input_month
+{
+		margin-left:30px;
+		border-radius:3px;
+		font-size:16px;
+		font-family:"Times New Roman";
+		position:relative;
+		margin-top:5px;
+		width:70px;
+		padding:5px;
+
+}
+.input_year
+{
+		margin-left:10px;
+		border-radius:3px;
+		font-size:16px;
+		font-family:"Times New Roman";
+		position:relative;
+		margin-top:5px;
+		width:70px;
+		padding:5px;
+
+}
+.input_cvv
+{
+		margin-left:30px;
+		border-radius:3px;
+		font-size:16px;
+		font-family:"Times New Roman";
+		position:relative;
+
+		margin-top:5px;
+		width:100px;
+		padding:5px;
+
+}
+input#gobutton
+{
+		font-family:"Cormorant Garamond Medium";
+		font-weight:bold;
+		font-size:20px;
+		margin-left:30px;
+		width:450px;
+		cursor:pointer;		 /*forces the cursor to change to a hand when the button is hovered*/
+		padding:5px 25px;
+		background:rgb(18,124,36);
+		border:1px solid #33842a;
+		border-radius: 3px;
+
+		box-shadow: 0 0 4px rgba(0,0,0, .75);
+		color:#f3f3f3;
+}
+
+input#gobutton:hover, input#gobutton:focus
+{
+		background-color :#399630;
+		box-shadow: 0 0 1px rgba(0,0,0, .75);
+}
+.card_bottom
+{
+	margin-left:120px;
+}
+
+.nava1
+{
+	color:white;
+	text-decoration:none;
+	font-size:42px;
+	cursor: pointer;
+}
+
+</style>
+
+</head>
+<body>
+<h1>
+
+<img src="{{url_for('static',filename='food.jpg')}}"  width="80" height="60">
+<span class="h1span"><a class="nava1" href="/">Happy Eats</a></span>
+<a href="/customer_logout" class="login">LOGOUT</></a>
+<a href="/cartshow" class="help">CART</a>
+<a href="/orders" class="help">MY ORDERS</a>
+
+</span>
+</h1>
+
+<div class="background">
+	<br><br>
+	<br><br>
+
+
+<div class="content1">
+	<div class="content2">
+		<span class="payment">Payment details</span>
+		<img class="card_image" src="{{url_for('static',filename='card.png')}}"  width="160" height="30">
+	</div>
+
+	<div class="content3">
+		<form name="form1" onsubmit="required()">
+			<br>
+			<span class="heading">CARD NUMBER</span>
+			<input class="input_number" type='number' name='cardnumber' min="1000000000000000" required>
+			<br>
+			<br>
+			<span class="heading">CARD HOLDER NAME</span>
+			<input class="input_number"  type='text' name='name' required>
+			<br>
+			<br>
+			<span class="heading">EXPIRATION DATE</span>
+			<br>
+			<input class="input_month" type='number' name ="month" placeholder="MM" min="1" max="12" required>
+			<input class="input_year" type='number' name ="year" placeholder="YY" min="2017" max="2030" required>
+			<br>
+			<br>
+			<span class="heading">CVV</span>
+			<br>
+			<input class="input_cvv" type='number' name='cvv' max='999' required>
+			<br>
+			<br>
+			<input id="gobutton" type="submit" name="submit" value="Place Order" />
+
+		</form>
+		<img class="card_bottom" src="{{url_for('static',filename='card_bottom.JPG')}}"  width="250" height="40">
+
+	</div>
+
+</div>
+
+
+
+
+</div>
+
+<br><br>
+
+
+</div>
+</body>
+</html>

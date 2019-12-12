@@ -1,0 +1,173 @@
+<html>
+<head>
+<link type="text/css" href="{{url_for('static',filename='webpages.css')}}" rel="stylesheet"/>
+
+<script type="text/javascript" src="{{url_for('static',filename='alert/alertify.min.js')}}"></script>
+<link rel="stylesheet" href="{{url_for('static',filename='alert/alertify.default.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='alert/alertify.core.css')}}">
+
+
+<script>
+function required()
+{
+var qty=document.forms["form1"]["qty"].value;
+	alertify.log( "item successfully added to cart", "success" );
+	document.form1.action="http://localhost:5000/postquantity/{{place}}/{{rest}}/{{item}}/{{price}}/{{dish_image}}"
+
+}
+</script>
+<style>
+
+.content2
+{
+			background-color:rgb(200,200,200);
+}
+
+.content1
+{
+				height: 20px;
+				background: linear-gradient(rgb(0,0,0), rgb(200,200,200));
+}
+.content3
+{
+				text-align:center;
+				background:rgba(0,0,0,0);
+				font-family:"Cormorant Garamond Medium";
+				font-weight:bold;
+
+				width:300px;
+				max-width:300px;
+				height:300px;
+				max-height:300px;
+				margin-left:40%;
+				margin-top:2%;
+				margin-bottom:55%;
+
+				display: inline-block;
+}
+
+input#gobutton
+{
+		cursor:pointer;		 /*forces the cursor to change to a hand when the button is hovered*/
+		padding:5px 25px;
+		background:rgb(139,69,19);
+		border:1px solid rgb(139,69,19);
+		border-radius: 10px;
+
+		box-shadow: 0 0 4px rgba(0,0,0, .75);
+		color:#f3f3f3;
+		font-size:1.1em;
+}
+
+input#gobutton:hover, input#gobutton:focus
+{
+		background-color:rgb(129,59,9);
+		box-shadow: 0 0 1px rgba(0,0,0, .75);
+}
+.quantity
+{
+		font-family:"Merriweather";
+		font-size:30px;
+		font-weight:500;
+}
+
+.yourorder
+{
+				background:rgba(0,0,0,0);
+		color:black;
+		font-size:50px;
+		height:50px;
+		font-weight:900;
+}
+.name
+{
+		margin-top:20px;
+		font-size:30px;
+}
+.background
+{
+		background-size: cover;
+		height:800px;
+}
+.input
+{
+		    border-radius: 4px;
+			height:25px;
+}
+
+.nava1
+{
+	color:white;
+	text-decoration:none;
+	font-size:42px;
+	cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<h1>
+
+<img src="{{url_for('static',filename='food.jpg')}}"  width="80" height="60">
+<span class="h1span"><a class="nava1" href="/">Happy Eats</a></span>
+<a href="/customer_logout" class="login">LOGOUT</></a>
+<a href="/cartshow" class="help">CART</a>
+<a href="/orders" class="help">MY ORDERS</a>
+
+</span>
+</h1>
+
+
+
+
+
+<div class="background" style="background-image:url({{url_for('static',filename='plate5.jpg')}});">
+
+<br><br><br><br><br><br>
+<br><br><br>
+<br><br><br>
+
+
+<div class="content3">
+<div class="yourorder">
+Your Order
+</div>
+<div class="name">
+{{item}}
+<br>
+&#36;
+{{price}}
+</div>
+
+
+<!--displays form to select quantity of items -->
+<br>
+<form name='form1'  method="post" onsubmit="required()">
+<br>
+<div class="quantity">
+Enter The Quantity
+</div>
+
+<input class="input" type='number' name='qty' required min='1' max='100'>
+<br>
+
+<br><br>
+<input id="gobutton" type="submit" name="submit" value="Submit" />
+
+
+</form>
+
+
+
+</div>
+
+
+
+
+</div>
+
+<br><br>
+
+</div>
+</body>
+</html>

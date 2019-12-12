@@ -1,0 +1,204 @@
+<html>
+<head>
+<link type="text/css" href="{{url_for('static',filename='webpages.css')}}" rel="stylesheet"/>
+
+<script type="text/javascript" src="{{url_for('static',filename='alert/alertify.min.js')}}"></script>
+<link rel="stylesheet" href="{{url_for('static',filename='alert/alertify.default.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='alert/alertify.core.css')}}">
+
+
+<script>
+function required()
+{
+	alertify.log( "review successfully posted ", "success" );
+	document.form1.action="http://localhost:5000/review_post/{{place}}/{{rest}}";
+	document.form1.method="post";
+}
+</script>
+
+<style>
+.content2
+{
+		background-image:url({{url_for('static',filename='bread.jpg')}});
+		background-size: cover;
+		background-attachment: fixed;         /* scroll div contents without background */
+}
+.content3						/* div outside table and inside background */
+{
+		width:800px;
+		margin-left:270px;
+		background:rgba(230,230,230,0.95);
+
+}
+.shopping
+{
+		font-size:28px;
+		font-weight:900;
+		font-family:"Cormorant Garamond Medium";
+		padding-left:45px;
+}
+
+.input_address
+{
+		margin-left:200px;
+		border-radius:3px;
+		font-size:16px;
+		font-family:"Lemonada";
+		position:relative;
+		margin-top:5px;
+		width:450px;
+		padding:5px;
+
+
+}
+
+input#gobutton
+{
+		font-family:"Cormorant Garamond Medium";
+		font-weight:bold;
+		font-size:20px;
+		margin-left:250px;
+		width:350px;
+		cursor:pointer;		 /*forces the cursor to change to a hand when the button is hovered*/
+		padding:5px 25px;
+		background:rgb(18,124,36);
+		border:1px solid #33842a;
+		border-radius: 3px;
+
+		box-shadow: 0 0 4px rgba(0,0,0, .75);
+		color:#f3f3f3;
+}
+
+input#gobutton:hover, input#gobutton:focus
+{
+		background-color :#399630;
+		box-shadow: 0 0 1px rgba(0,0,0, .75);
+}
+.no
+{
+		font-size:20px;
+		margin-left:350px;
+		font-family:"Cormorant Garamond Medium";
+		font-weight:bold;
+}
+.date
+{
+	font-family:"PT Serif";
+	font-size:18px;
+	margin-left:50px;
+	font-weight:600;
+}
+.name
+{
+	font-family:"PT Serif";
+	font-size:18px;
+	margin-left:50px;
+}
+table {
+    border-collapse: collapse;
+  table-layout:fixed;
+
+}
+
+td {
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
+table tr td.first_td
+{
+		width:200px;
+}
+
+
+.review
+{
+		font-family:Lemonada;
+}
+
+.nava1
+{
+	color:white;
+	text-decoration:none;
+	font-size:42px;
+	cursor: pointer;
+}
+
+</style>
+</head>
+<body>
+<h1>
+
+<img src="{{url_for('static',filename='food.jpg')}}"  width="80" height="60">
+<span class="h1span"><a class="nava1" href="/">Happy Eats</a></span>
+<span>
+<a href="/customer_logout" class="login">LOGOUT</></a>
+<a href="/cartshow" class="help">CART</a>
+<a href="/orders" class="help">MY ORDERS</a>
+
+</span>
+</h1>
+
+
+<div class="content2">
+<br>
+<br>
+<br>
+<br>
+
+
+<div class="content3">
+	<br>
+	<div class="shopping">
+	Reviews
+	</div>
+	<hr width="90%">
+	{%if reviews%}
+	<table>
+		{%for x in reviews%}
+		<tr>
+			<td class="first_td">
+				<span class="date">{{x[3]}}</span>
+				<br>
+				<span class="name">by {{x[0]}} </span>
+
+
+			</td>
+			<td>
+				{% for n in range(x[4]) %}
+					<span style="font-size:200%;color:rgb(255,164,6);">&starf;</span>
+				{%endfor%}
+				<br>
+				<span class="review">{{x[5]}}</span>
+			</td>
+		</tr>
+		{%endfor%}
+	</table>
+	{%else%}
+	<span class="no">no reviews YET!!</span>
+	{%endif%}
+	<br>
+	<hr width="90%">
+
+	<form name='form1' onsubmit='required()'>
+	<textarea class="input_address" type='text' name='review' cols="40" rows="5" required></textarea>
+	<br>
+	<input id="gobutton"  type="submit" name="submit" value="Submit review" />
+	</form>
+
+
+
+
+
+<br>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+</div>
+
+
+</body>
+</html>
